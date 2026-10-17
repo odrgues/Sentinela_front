@@ -1,9 +1,9 @@
-export type TipoCiclo = 'anual' | 'perene'
+// A cana tem regra própria de colheita, por isso não é nem anual nem perene.
+export type TipoCiclo = 'anual' | 'perene' | 'cana'
 
 export type Cultura = {
   id: number
   nome: string
-  // null no café: a lavoura perene não tem um ciclo em dias.
-  cicloDias: number | null
+  cicloDias: number
   tipoCiclo: TipoCiclo
 }
