@@ -24,6 +24,13 @@ npm run format    # arruma a formatação com o Prettier
 Em `npm run dev`, o que a API de mentira não responde vai para o backend de verdade, em
 `http://localhost:8080` (o proxy fica no `vite.config.ts`).
 
+No build de produção, a API fica em outro endereço, que vem da variável `VITE_API_URL`
+(ver `.env.example`):
+
+```sh
+VITE_API_URL=https://endereco-da-api npm run build
+```
+
 ## Pastas
 
 ```

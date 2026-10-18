@@ -10,12 +10,15 @@ type Opcoes = {
 }
 
 export function enderecoDaApi(caminho: string, parametros: Parametros = {}) {
+  // Em desenvolvimento fica vazia e o Vite repassa /api para o backend. No build de produção,
+  // é o endereço da API no Azure (ver .env.example).
+  const base = import.meta.env.VITE_API_URL ?? ''
   const query = new URLSearchParams()
   for (const [chave, valor] of Object.entries(parametros)) {
     if (valor !== undefined && valor !== '') query.set(chave, String(valor))
   }
   const texto = query.toString()
-  return texto ? `/api/${caminho}?${texto}` : `/api/${caminho}`
+  return texto ? `${base}/api/${caminho}?${texto}` : `${base}/api/${caminho}`
 }
 
 // O único lugar que chama a API. Põe o token, manda o corpo em JSON e

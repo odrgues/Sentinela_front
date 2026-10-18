@@ -25,6 +25,7 @@ async function erroDe(promessa: Promise<unknown>): Promise<ErroApi> {
 
 afterEach(() => {
   vi.unstubAllGlobals()
+  vi.unstubAllEnvs()
 })
 
 describe('enderecoDaApi', () => {
@@ -32,6 +33,12 @@ describe('enderecoDaApi', () => {
     expect(
       enderecoDaApi('cultivos/7/alertas', { severidade: 'critico', tipo: undefined, de: '' }),
     ).toBe('/api/cultivos/7/alertas?severidade=critico')
+  })
+
+  it('no build de produção, chama a API no endereço da VITE_API_URL', () => {
+    vi.stubEnv('VITE_API_URL', 'https://api.sentinela.exemplo')
+
+    expect(enderecoDaApi('culturas')).toBe('https://api.sentinela.exemplo/api/culturas')
   })
 })
 
