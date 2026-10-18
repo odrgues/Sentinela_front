@@ -1,5 +1,6 @@
 import { http, HttpResponse } from 'msw'
 import { culturas } from './dados/culturas'
+import { painel } from './dados/painel'
 import { usuario } from './dados/usuario'
 
 type NovoCultivo = {
@@ -18,6 +19,8 @@ export const APELIDO_REPETIDO = 'Talhão do fundo'
 
 export const handlersDaLavoura = [
   http.get('/api/usuario/me', () => HttpResponse.json(usuario)),
+
+  http.get('/api/painel', () => HttpResponse.json(painel())),
 
   http.post('/api/cultivos', async ({ request }) => {
     const novo = (await request.json()) as NovoCultivo

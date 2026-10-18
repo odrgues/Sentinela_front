@@ -88,6 +88,15 @@ export const altura = {
   bolinhaDaOpcao: '22px',
   listaDeCulturas: '232px',
   mapaNoComputador: '520px',
+  mapaDoPainelNoComputador: '600px',
+  // No celular, o mapa fica parado no alto e a folha com as lavouras sobe por cima dele.
+  mapaNoCelular: '45dvh',
+  inicioDaFolha: '40dvh',
+  alcaDaFolha: '5px',
+  bolinhaDaLegenda: '12px',
+  carregandoLinha: '18px',
+  carregandoTitulo: '24px',
+  carregandoCartao: '92px',
   faixaDoLogin: '290px',
   faixaDoComputador: '320px',
 }
@@ -107,6 +116,11 @@ export const largura = {
   formularioDaLavoura: '520px',
   colunaDaLavoura: '400px',
   mapa: '560px',
+  colunaDoPainel: '380px',
+  alcaDaFolha: '44px',
+  carregandoCurto: '70px',
+  carregandoMedio: '140px',
+  carregandoLongo: '220px',
 }
 
 export const espessura = {
@@ -138,6 +152,9 @@ export const icone = {
 export const marcador = {
   largura: 56,
   altura: 72,
+  // Os marcadores das lavouras no mapa do painel.
+  larguraNoPainel: 40,
+  alturaNoPainel: 52,
 }
 
 export const tracoDoIcone = {
