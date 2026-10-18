@@ -1,6 +1,7 @@
 import type { RouteObject } from 'react-router'
 import { Cadastro } from '../../features/acesso/Cadastro'
 import { Entrar } from '../../features/acesso/Entrar'
+import { MinhaConta } from '../../features/conta/MinhaConta'
 import { EsqueciSenha } from '../../features/acesso/EsqueciSenha'
 import { NovaSenha } from '../../features/acesso/NovaSenha'
 import { DetalheDaLavoura } from '../../features/lavoura/DetalheDaLavoura'
@@ -10,7 +11,6 @@ import { Painel } from '../../features/painel/Painel'
 import { Casca } from '../../shared/layout/Casca'
 import { SoQuemEntrou, SoQuemNaoEntrou } from './guardas'
 import { NaoEncontrada } from './NaoEncontrada'
-import { PaginaVazia } from './PaginaVazia'
 
 // Uma rota por tela do canvas. A tela chama de "lavoura" o que a API chama de "cultivo".
 export const rotas: RouteObject[] = [
@@ -34,7 +34,7 @@ export const rotas: RouteObject[] = [
           { path: '/lavouras/nova', element: <NovaLavoura /> },
           { path: '/lavouras/:id', element: <DetalheDaLavoura /> },
           { path: '/lavouras/:id/editar', element: <EditarLavoura /> },
-          { path: '/conta', element: <PaginaVazia titulo="Minha conta" /> },
+          { path: '/conta', element: <MinhaConta /> },
         ],
       },
     ],

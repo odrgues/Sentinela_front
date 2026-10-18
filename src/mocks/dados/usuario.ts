@@ -9,6 +9,7 @@ export const usuario: Usuario = {
   nome: 'João',
   email: EMAIL_DE_TESTE,
   whatsappNumero: '+5534999999999',
+  avisosWhatsapp: true,
 }
 
 export const entrada: Entrada = { token: 'token-de-mentira', usuario }

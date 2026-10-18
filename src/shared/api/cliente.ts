@@ -7,6 +7,8 @@ type Opcoes = {
   metodo?: 'GET' | 'POST' | 'PATCH' | 'DELETE'
   corpo?: unknown
   parametros?: Parametros
+  // Para quando o 401 quer dizer outra coisa: no Excluir conta, é a senha errada.
+  vencerSessaoNo401?: boolean
 }
 
 export function enderecoDaApi(caminho: string, parametros: Parametros = {}) {
@@ -24,7 +26,7 @@ export function enderecoDaApi(caminho: string, parametros: Parametros = {}) {
 // O único lugar que chama a API. Põe o token, manda o corpo em JSON e
 // transforma qualquer falha num ErroApi com a mensagem pronta para a pessoa.
 export async function chamarApi<T>(caminho: string, opcoes: Opcoes = {}): Promise<T> {
-  const { metodo = 'GET', corpo, parametros } = opcoes
+  const { metodo = 'GET', corpo, parametros, vencerSessaoNo401 = true } = opcoes
   const cabecalhos: Record<string, string> = {}
   const token = lerToken()
   if (token) cabecalhos.Authorization = `Bearer ${token}`
@@ -42,7 +44,7 @@ export async function chamarApi<T>(caminho: string, opcoes: Opcoes = {}): Promis
   }
 
   // Um 401 com token é sessão vencida. Sem token, é o login dizendo que a senha está errada.
-  if (resposta.status === 401 && token) encerrarSessaoVencida()
+  if (resposta.status === 401 && token && vencerSessaoNo401) encerrarSessaoVencida()
 
   // 204: deu certo e não tem corpo (excluir lavoura, excluir conta).
   if (resposta.status === 204) return undefined as T

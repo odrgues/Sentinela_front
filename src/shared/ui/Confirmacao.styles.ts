@@ -73,6 +73,10 @@ export const Textos = styled.div`
     line-height: ${({ theme }) => theme.fonte.alturaLinha.media};
   }
 
+  form {
+    margin-top: ${({ theme }) => theme.espaco[4]};
+  }
+
   p {
     margin: 0;
     font-size: ${({ theme }) => theme.fonte.tamanho.destaque};
