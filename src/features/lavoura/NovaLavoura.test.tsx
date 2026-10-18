@@ -53,8 +53,9 @@ describe('Nova lavoura no celular', () => {
     await userEvent.type(screen.getByLabelText('Tamanho em hectares (opcional)'), '12,5')
     await userEvent.click(screen.getByRole('button', { name: 'Salvar e ver minha lavoura' }))
 
-    expect(await screen.findByRole('heading', { level: 1, name: 'Painel' })).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { level: 1, name: /, João$/ })).toBeInTheDocument()
     expect(roteador.state.location.pathname).toBe('/')
+    expect(screen.getByRole('status', { name: '' })).toHaveTextContent('Lavoura salva!')
     expect(corpos[0]).toEqual({
       culturaId: 3,
       apelido: 'Roça nova',
@@ -184,7 +185,7 @@ describe('Nova lavoura no computador', () => {
     await preencher()
     await userEvent.click(screen.getByRole('button', { name: 'Salvar e ver minha lavoura' }))
 
-    expect(await screen.findByRole('heading', { level: 1, name: 'Painel' })).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { level: 1, name: /, João$/ })).toBeInTheDocument()
   })
 
   it('sem conexão, mostra a caixa de erro', async () => {

@@ -28,7 +28,7 @@ describe('Casca', () => {
     jaEntrou()
     abrirApp('/')
 
-    await screen.findByRole('heading', { level: 1, name: 'Painel' })
+    await screen.findByRole('heading', { level: 1, name: /, João$/ })
     expect(screen.queryByRole('navigation', { name: 'Principal' })).not.toBeInTheDocument()
   })
 

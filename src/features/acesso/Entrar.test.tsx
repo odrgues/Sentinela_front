@@ -21,7 +21,7 @@ describe('Entrar', () => {
 
     await preencher(EMAIL_DE_TESTE, SENHA_DE_TESTE)
 
-    expect(await screen.findByRole('heading', { level: 1, name: 'Painel' })).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { level: 1, name: /, João$/ })).toBeInTheDocument()
     expect(roteador.state.location.pathname).toBe('/')
     expect(lerToken()).toBe('token-de-mentira')
   })

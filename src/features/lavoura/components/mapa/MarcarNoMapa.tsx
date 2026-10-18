@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { chaveDoGoogle } from '../../../../shared/mapa/chave'
 import type { Local, Ponto } from '../../tipos'
 import { MapaDoGoogle } from './MapaDoGoogle'
 import { MapaSemChave } from './MapaSemChave'
@@ -15,6 +16,6 @@ type Props = {
 
 // O único lugar que decide entre o mapa do Google e o aviso de mapa desligado.
 export function MarcarNoMapa(props: Props) {
-  const chave = import.meta.env.VITE_GOOGLE_MAPS_KEY
+  const chave = chaveDoGoogle()
   return chave ? <MapaDoGoogle chave={chave} {...props} /> : <MapaSemChave {...props} />
 }

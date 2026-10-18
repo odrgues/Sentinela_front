@@ -11,8 +11,8 @@ const TELAS_DE_ACESSO = [
   ['/nova-senha?token=abc', 'Crie uma senha nova'],
 ]
 
-const TELAS_DE_QUEM_ENTROU = [
-  ['/', 'Painel'],
+const TELAS_DE_QUEM_ENTROU: [string, string | RegExp][] = [
+  ['/', /, João$/],
   ['/lavouras/nova', 'Onde fica sua lavoura?'],
   ['/lavouras/7', 'Detalhe da lavoura'],
   ['/lavouras/7/editar', 'Editar lavoura'],
@@ -46,7 +46,7 @@ describe('rotas', () => {
       jaEntrou()
       const roteador = abrirApp(caminho)
 
-      expect(await screen.findByRole('heading', { level: 1, name: 'Painel' })).toBeInTheDocument()
+      expect(await screen.findByRole('heading', { level: 1, name: /, João$/ })).toBeInTheDocument()
       expect(roteador.state.location.pathname).toBe('/')
     },
   )

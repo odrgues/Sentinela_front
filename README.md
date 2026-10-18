@@ -116,4 +116,20 @@ desligado" e, em desenvolvimento e nos testes, marca a lavoura no ponto de exemp
 MG. A parte do Google (mapa, busca e Geocoder) só roda com a chave, e ainda não foi testada com
 uma chave de verdade.
 
+**O painel** (`src/features/painel`):
+
+- "Bom dia, João" (a saudação vem da hora do aparelho), o clima de hoje na cidade da lavoura
+  mais grave, a frase da semana e as lavouras do aviso mais grave para o mais leve, cada uma
+  com o andamento ("Soja · dia 45 de 120", ou "Café · safra 2026/27" na perene) e o selo do
+  aviso. Tocar numa lavoura abre o detalhe.
+- No celular, o mapa fica no alto e a folha das lavouras sobe por cima dele; no computador, as
+  lavouras à esquerda e o mapa à direita, com a legenda e a hora da última previsão.
+- O mapa do painel é o comum, com um marcador colorido por lavoura, enquadrando todas.
+- Os estados: carregando (cinza pulsando), previsão fora do ar (a faixa cinza com a hora da
+  última busca que deu certo), erro com "Tentar de novo" e "Lavoura salva!" depois de
+  cadastrar. Sem nenhuma lavoura, o painel manda para a Nova lavoura.
+
+Os marcadores do painel pedem um Map ID do Google (`VITE_GOOGLE_MAP_ID`). Sem ele, o mapa usa
+o `DEMO_MAP_ID`, que serve para desenvolvimento.
+
 As outras telas ainda estão com a página vazia.
