@@ -18,6 +18,8 @@ export const cores = {
     trilho: '#E4E7DC',
     semPrevisao: '#E6E7E2',
     mensagem: '#1C2A1F',
+    // O escuro atrás das confirmações (Já colhi, Excluir).
+    veu: 'rgba(20, 28, 22, 0.55)',
   },
   texto: {
     principal: '#1C2A1F',
@@ -39,6 +41,17 @@ export const cores = {
     critico: { marcador: '#B42318', fundo: '#FBE3DF', texto: '#8E1F12', corpo: '#5E160D' },
     atencao: { marcador: '#C27A0E', fundo: '#FCEFD3', texto: '#6E4300', corpo: '#4F3000' },
     ok: { marcador: '#2F5D3A', fundo: '#E1EEDC', texto: '#24492D', corpo: '#24492D' },
+  },
+  // Os ícones da previsão de cada dia.
+  tempo: {
+    sol: '#C27A0E',
+    nuvem: '#5F6B66',
+    chuva: '#1F5A7A',
+  },
+  // O dia de risco crítico na previsão do computador.
+  diaCritico: {
+    fundo: '#FFF4F2',
+    borda: '#E9A79D',
   },
   enso: {
     fundo: '#E3EDF3',

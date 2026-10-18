@@ -1,3 +1,7 @@
+import type { TipoCiclo } from '../../shared/api/tipos/cultura'
+import type { Severidade } from '../../shared/ui/nivel'
+import type { Condicao } from '../../shared/ui/tempo'
+
 export type Ponto = { latitude: number; longitude: number }
 
 // O ponto marcado no mapa, com a cidade e a UF que o Google achou para ele.
@@ -22,4 +26,71 @@ export type Cultivo = {
   longitude: number
   municipio: string
   status: 'em_andamento' | 'colhido' | 'perdido'
+}
+
+export type NivelDoDia = 'ok' | 'atencao' | 'critico'
+
+export type AlertaDaSemana = {
+  tipo: string
+  severidade: Severidade
+  data: string
+  mensagem: string
+  porque: string
+}
+
+export type DiaDePrevisao = {
+  data: string
+  condicao: Condicao
+  minC: number
+  maxC: number
+  chuvaMm: number
+  nivel: NivelDoDia
+  frase: string
+}
+
+export type Enso = {
+  fase: string
+  intensidade: string
+  indice: number
+  mesPlantio: string
+  frase: string
+}
+
+// GET /api/cultivos/{id}
+export type DetalheDaLavoura = {
+  id: number
+  apelido: string
+  cultura: string
+  culturaId?: number
+  areaHa: number | null
+  municipio: string
+  latitude: number
+  longitude: number
+  status: Cultivo['status']
+  tipoCiclo: TipoCiclo
+  dataPlantio: string
+  colheitaPrevista: string
+  diaAtual: number | null
+  cicloDias: number | null
+  safra: string | null
+  previsaoDisponivel: boolean
+  previsaoAtualizadaEm: string
+  enso: Enso | null
+  alertas: AlertaDaSemana[]
+  previsao: DiaDePrevisao[]
+}
+
+export type AvisoDoHistorico = {
+  tipo: string
+  severidade: Severidade
+  data: string
+  mensagem: string
+}
+
+// GET /api/cultivos/{id}/alertas: 20 por página, do mais novo para o mais antigo.
+export type PaginaDoHistorico = {
+  itens: AvisoDoHistorico[]
+  total: number
+  pagina: number
+  tamanho: number
 }

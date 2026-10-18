@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import type { NivelDoTema } from '../nivel'
+import type { NivelDoTema } from '../../../shared/ui/nivel'
 
 export const Area = styled.div`
   position: absolute;

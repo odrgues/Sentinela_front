@@ -3,6 +3,7 @@ import { Cadastro } from '../../features/acesso/Cadastro'
 import { Entrar } from '../../features/acesso/Entrar'
 import { EsqueciSenha } from '../../features/acesso/EsqueciSenha'
 import { NovaSenha } from '../../features/acesso/NovaSenha'
+import { DetalheDaLavoura } from '../../features/lavoura/DetalheDaLavoura'
 import { NovaLavoura } from '../../features/lavoura/NovaLavoura'
 import { Painel } from '../../features/painel/Painel'
 import { Casca } from '../../shared/layout/Casca'
@@ -30,7 +31,7 @@ export const rotas: RouteObject[] = [
         children: [
           { path: '/', element: <Painel /> },
           { path: '/lavouras/nova', element: <NovaLavoura /> },
-          { path: '/lavouras/:id', element: <PaginaVazia titulo="Detalhe da lavoura" /> },
+          { path: '/lavouras/:id', element: <DetalheDaLavoura /> },
           { path: '/lavouras/:id/editar', element: <PaginaVazia titulo="Editar lavoura" /> },
           { path: '/conta', element: <PaginaVazia titulo="Minha conta" /> },
         ],

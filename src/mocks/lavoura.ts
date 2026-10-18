@@ -1,5 +1,6 @@
 import { http, HttpResponse } from 'msw'
 import { culturas } from './dados/culturas'
+import { detalhe, historico } from './dados/detalhe'
 import { painel } from './dados/painel'
 import { usuario } from './dados/usuario'
 
@@ -21,6 +22,43 @@ export const handlersDaLavoura = [
   http.get('/api/usuario/me', () => HttpResponse.json(usuario)),
 
   http.get('/api/painel', () => HttpResponse.json(painel())),
+
+  http.get('/api/cultivos/:id', ({ params }) => {
+    const lavoura = detalhe(Number(params.id))
+    if (!lavoura) {
+      return HttpResponse.json(
+        { status: 404, mensagem: 'Lavoura não encontrada.' },
+        { status: 404 },
+      )
+    }
+    return HttpResponse.json(lavoura)
+  }),
+
+  http.get('/api/cultivos/:id/alertas', ({ request }) => {
+    const busca = new URL(request.url).searchParams
+    const severidade = busca.get('severidade')
+    const pagina = Number(busca.get('pagina') ?? 0)
+    const tamanho = 20
+    const todos = historico().filter((aviso) => !severidade || aviso.severidade === severidade)
+    return HttpResponse.json({
+      itens: todos.slice(pagina * tamanho, (pagina + 1) * tamanho),
+      total: todos.length,
+      pagina,
+      tamanho,
+    })
+  }),
+
+  http.patch('/api/cultivos/:id', async ({ params, request }) => {
+    const lavoura = detalhe(Number(params.id))
+    if (!lavoura) {
+      return HttpResponse.json(
+        { status: 404, mensagem: 'Lavoura não encontrada.' },
+        { status: 404 },
+      )
+    }
+    const mudancas = (await request.json()) as Record<string, unknown>
+    return HttpResponse.json({ ...lavoura, ...mudancas })
+  }),
 
   http.post('/api/cultivos', async ({ request }) => {
     const novo = (await request.json()) as NovoCultivo
