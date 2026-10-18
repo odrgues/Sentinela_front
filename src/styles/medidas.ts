@@ -77,6 +77,7 @@ export const sombra = {
   folha: '0 -6px 24px rgba(28, 42, 31, 0.14)',
   cartaoNoMapa: '0 6px 24px rgba(28, 42, 31, 0.16)',
   abaEscolhida: '0 1px 4px rgba(28, 42, 31, 0.15)',
+  bolinhaDaChave: '0 1px 3px rgba(0, 0, 0, 0.25)',
 }
 
 export const altura = {
@@ -105,6 +106,8 @@ export const altura = {
   aba: '46px',
   filtro: '40px',
   iconeDaConfirmacao: '56px',
+  chave: '32px',
+  bolinhaDaChave: '24px',
   faixaDoLogin: '290px',
   faixaDoComputador: '320px',
 }
@@ -136,6 +139,9 @@ export const largura = {
   diaNaLista: '52px',
   seloDoHistorico: '82px',
   tabelaDoHistorico: '520px',
+  chave: '52px',
+  conta: '640px',
+  textoDoPerigo: '360px',
 }
 
 export const espessura = {

@@ -159,4 +159,13 @@ o `DEMO_MAP_ID`, que serve para desenvolvimento.
 - No computador, o formulário fica num cartão no meio da tela, como as telas que só têm versão
   de celular no canvas.
 
-Ainda com a página vazia: Minha conta.
+**Minha conta** (`/conta`, em `src/features/conta`):
+
+- Nome, e-mail (só para ler), WhatsApp (mostrado como "(34) 99999-9999") e a chave "Receber
+  avisos automáticos" (`avisosWhatsapp`). O `PATCH` leva só o que mudou; apagar o WhatsApp
+  manda `null`, que desvincula.
+- "Trocar minha senha" manda o link do "Esqueci minha senha" para o e-mail da conta.
+- "Sair" apaga o token. "Excluir minha conta" pede a senha na confirmação; a senha errada
+  avisa embaixo do campo, sem deslogar.
+
+Todas as telas do canvas estão feitas.

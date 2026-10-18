@@ -28,6 +28,12 @@ export const Entrada = styled.input<{ $comErro: boolean }>`
       ? `${theme.espessura.bordaDeErro} solid ${theme.cores.erro}`
       : `${theme.espessura.borda} solid ${theme.cores.borda.campo}`};
   border-radius: ${({ theme }) => theme.raio.campo};
+
+  &:read-only {
+    color: ${({ theme }) => theme.cores.texto.secundario};
+    background: ${({ theme }) => theme.cores.fundo.carregandoSuave};
+    border-color: ${({ theme }) => theme.cores.borda.cartao};
+  }
 `
 
 export const Erro = styled.span`

@@ -2,7 +2,7 @@ import { http, HttpResponse } from 'msw'
 import { culturas } from './dados/culturas'
 import { detalhe, historico } from './dados/detalhe'
 import { painel } from './dados/painel'
-import { usuario } from './dados/usuario'
+import { SENHA_DE_TESTE, usuario } from './dados/usuario'
 
 type NovoCultivo = {
   culturaId: number
@@ -20,6 +20,30 @@ export const APELIDO_REPETIDO = 'Talhão do fundo'
 
 export const handlersDaLavoura = [
   http.get('/api/usuario/me', () => HttpResponse.json(usuario)),
+
+  // O WhatsApp (34) 90000-0000 já está em outra conta.
+  http.patch('/api/usuario/me', async ({ request }) => {
+    const mudancas = (await request.json()) as Record<string, unknown>
+    if (
+      typeof mudancas.whatsappNumero === 'string' &&
+      mudancas.whatsappNumero.includes('90000-0000')
+    ) {
+      return HttpResponse.json(
+        { status: 409, mensagem: 'Este WhatsApp já está em outra conta.' },
+        { status: 409 },
+      )
+    }
+    return HttpResponse.json({ ...usuario, ...mudancas })
+  }),
+
+  // Como na especificação: a senha errada responde 401.
+  http.delete('/api/usuario/me', async ({ request }) => {
+    const { senha } = (await request.json()) as { senha?: string }
+    if (senha !== SENHA_DE_TESTE) {
+      return HttpResponse.json({ status: 401, mensagem: 'Senha incorreta.' }, { status: 401 })
+    }
+    return new HttpResponse(null, { status: 204 })
+  }),
 
   http.get('/api/painel', () => HttpResponse.json(painel())),
 
