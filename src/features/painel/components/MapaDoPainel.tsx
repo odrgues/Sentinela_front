@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import { useTheme } from 'styled-components'
 import { chaveDoGoogle, mapIdDoGoogle } from '../../../shared/mapa/chave'
-import { NIVEL, NOME_DO_NIVEL, type NivelDoTema } from '../nivel'
+import { NIVEL, NOME_DO_NIVEL, type NivelDoTema } from '../../../shared/ui/nivel'
 import type { LavouraNoPainel } from '../tipos'
 import * as S from './MapaDoPainel.styles'
 

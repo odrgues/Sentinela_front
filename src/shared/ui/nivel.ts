@@ -1,5 +1,7 @@
 import { Check, CircleAlert, TriangleAlert, type LucideIcon } from 'lucide-react'
-import type { Severidade } from './tipos'
+
+// O nível de um aviso, como a API manda. "info" é a semana sem risco: "Tudo certo".
+export type Severidade = 'critico' | 'atencao' | 'info'
 
 // A API diz "info" para a semana sem risco; o tema chama essa cor de "ok".
 export type NivelDoTema = 'critico' | 'atencao' | 'ok'

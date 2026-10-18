@@ -1,6 +1,6 @@
 import { ChevronRight } from 'lucide-react'
 import { useTheme } from 'styled-components'
-import { ICONE_DO_NIVEL, NIVEL } from '../nivel'
+import { ICONE_DO_NIVEL, NIVEL } from '../../../shared/ui/nivel'
 import { andamento } from '../textos'
 import type { LavouraNoPainel } from '../tipos'
 import * as S from './CartaoDaLavoura.styles'

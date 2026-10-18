@@ -1,9 +1,6 @@
 import type { TipoCiclo } from '../../shared/api/tipos/cultura'
-
-// A cor do marcador e do selo. "info" é a semana sem risco: "Tudo certo".
-export type Severidade = 'critico' | 'atencao' | 'info'
-
-export type Condicao = 'sol' | 'sol_nuvens' | 'nublado' | 'chuva' | 'tempestade'
+import type { Condicao } from '../../shared/ui/tempo'
+import type { Severidade } from '../../shared/ui/nivel'
 
 export type Aviso = {
   tipo: string

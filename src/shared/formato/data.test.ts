@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { hoje, quandoFoi } from './data'
+import { dataCompleta, diaCurto, diaDaSemana, diaEMes, hoje, quandoFoi } from './data'
 
 afterEach(() => {
   vi.useRealTimers()
@@ -26,5 +26,24 @@ describe('quandoFoi', () => {
 
   it('antes de ontem, só a data, com os minutos quando tem', () => {
     expect(quandoFoi(new Date(2026, 9, 8, 7, 30).toISOString(), agora)).toBe('08/10 às 7h30')
+  })
+})
+
+describe('datas da API', () => {
+  it('reorganiza sem mudar o dia', () => {
+    expect(diaEMes('2026-10-15')).toBe('15/10')
+    expect(dataCompleta('2026-10-15')).toBe('15/10/2026')
+  })
+
+  it('acha o dia da semana pelo calendário do aparelho', () => {
+    expect(diaDaSemana('2026-10-15')).toBe('quinta')
+    expect(diaDaSemana('2026-10-11')).toBe('domingo')
+  })
+
+  it('chama o dia de hoje de "Hoje"', () => {
+    vi.useFakeTimers({ now: new Date(2026, 9, 11, 9, 0) })
+
+    expect(diaCurto('2026-10-11')).toBe('Hoje')
+    expect(diaCurto('2026-10-12')).toBe('Seg')
   })
 })

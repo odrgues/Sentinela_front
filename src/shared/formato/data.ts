@@ -29,3 +29,35 @@ export function quandoFoi(dataEHora: string, agora = new Date()) {
     return `ontem, ${diaEMes} às ${hora(quando)}`
   return `${diaEMes} às ${hora(quando)}`
 }
+
+// Uma data da API (2026-10-15) no dia certo do aparelho. Sem new Date('2026-10-15'), que lê
+// meia-noite em Londres e no Brasil vira o dia anterior.
+function lerData(data: string) {
+  const [ano, mes, dia] = data.split('-').map(Number)
+  return new Date(ano, mes - 1, dia)
+}
+
+const DIAS_DA_SEMANA = ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado']
+const DIAS_CURTOS = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
+
+// "15/10"
+export function diaEMes(data: string) {
+  const [, mes, dia] = data.split('-')
+  return `${dia}/${mes}`
+}
+
+// "15/10/2026"
+export function dataCompleta(data: string) {
+  const [ano, mes, dia] = data.split('-')
+  return `${dia}/${mes}/${ano}`
+}
+
+// "quinta"
+export function diaDaSemana(data: string) {
+  return DIAS_DA_SEMANA[lerData(data).getDay()]
+}
+
+// "Qui", ou "Hoje" quando é hoje.
+export function diaCurto(data: string) {
+  return data === hoje() ? 'Hoje' : DIAS_CURTOS[lerData(data).getDay()]
+}

@@ -40,6 +40,8 @@ export const fonte = {
     tituloDeAcesso: '32px',
     tituloNoMapa: '24px',
     tituloDaTela: '30px',
+    tituloDoDetalhe: '34px',
+    tituloDaConfirmacao: '24px',
     marca: '30px',
     marcaComputador: '34px',
     temperatura: '30px',
@@ -61,6 +63,7 @@ export const raio = {
   botao: '14px',
   cartao: '16px',
   cartaoGrande: '18px',
+  aba: '11px',
   quadro: '20px',
   folha: '24px',
   pilula: '999px',
@@ -73,6 +76,7 @@ export const sombra = {
   mensagem: '0 6px 20px rgba(28, 42, 31, 0.25)',
   folha: '0 -6px 24px rgba(28, 42, 31, 0.14)',
   cartaoNoMapa: '0 6px 24px rgba(28, 42, 31, 0.16)',
+  abaEscolhida: '0 1px 4px rgba(28, 42, 31, 0.15)',
 }
 
 export const altura = {
@@ -97,6 +101,10 @@ export const altura = {
   carregandoLinha: '18px',
   carregandoTitulo: '24px',
   carregandoCartao: '92px',
+  barraDoCiclo: '12px',
+  aba: '46px',
+  filtro: '40px',
+  iconeDaConfirmacao: '56px',
   faixaDoLogin: '290px',
   faixaDoComputador: '320px',
 }
@@ -121,6 +129,13 @@ export const largura = {
   carregandoCurto: '70px',
   carregandoMedio: '140px',
   carregandoLongo: '220px',
+  detalhe: '1280px',
+  colunaDoDetalhe: '340px',
+  colunaDaPrevisao: '600px',
+  diaDaPrevisao: '96px',
+  diaNaLista: '52px',
+  seloDoHistorico: '82px',
+  tabelaDoHistorico: '520px',
 }
 
 export const espessura = {
@@ -146,6 +161,10 @@ export const icone = {
   marcaComputador: 40,
   clima: 40,
   busca: 20,
+  avisoDoDetalhe: 24,
+  tempoNaLista: 26,
+  tempoNoCartao: 34,
+  confirmacao: 30,
 }
 
 // O marcador parado no meio do mapa, com a ponta no ponto marcado.

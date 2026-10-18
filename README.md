@@ -132,4 +132,20 @@ uma chave de verdade.
 Os marcadores do painel pedem um Map ID do Google (`VITE_GOOGLE_MAP_ID`). Sem ele, o mapa usa
 o `DEMO_MAP_ID`, que serve para desenvolvimento.
 
-As outras telas ainda estão com a página vazia.
+**O detalhe da lavoura** (`/lavouras/:id`, em `src/features/lavoura`):
+
+- O resumo ("Soja · plantada em 27/08 · 12 ha"), o ciclo com a barra ("Dia 45 de 120",
+  colheita prevista) ou a safra na perene, e o cartão do El Niño ou La Niña, que some quando a
+  API não manda.
+- Os avisos da semana, cada um com o "Por quê?" que abre a explicação com a fonte.
+- As abas "Próximos 7 dias" (em lista no celular, em cartões no computador, com a frase do dia
+  na cor do nível) e "Histórico" (filtro por nível, 20 por vez com "Ver mais avisos"; em tabela
+  no computador).
+- "Editar" e "Já colhi", que pede confirmação e tem a saída "A lavoura foi perdida". Lavoura
+  colhida ou perdida avisa que não recebe mais avisos.
+- A `Confirmacao` em `src/shared/ui`: sobe de baixo no celular, fica no meio no computador,
+  fecha com Esc ou tocando fora e devolve o foco.
+- Lavoura que não existe (ou de outra pessoa, que a API devolve como 404): "Lavoura não
+  encontrada".
+
+Ainda com a página vazia: Editar lavoura e Minha conta.
