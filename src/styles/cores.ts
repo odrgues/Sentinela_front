@@ -41,9 +41,15 @@ export const cores = {
     titulo: '#173F56',
     texto: '#1F3B4C',
   },
+  // A faixa verde do login e do cadastro: os talhões, a divisa entre eles e a estrada.
   marca: {
     sol: '#F2D27A',
+    estrada: '#D9B865',
+    divisa: '#5B8C63',
+    talhoes: ['#386B43', '#33643E', '#3D7348', '#3A6E45', '#35673F'],
+    cartao: 'rgba(25, 52, 32, 0.82)',
   },
+  erro: '#A3271A',
   sucesso: '#9CC3A3',
   foco: '#9CC3A3',
 }
