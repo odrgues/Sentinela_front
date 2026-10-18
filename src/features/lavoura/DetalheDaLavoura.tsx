@@ -1,12 +1,13 @@
 import { ChevronLeft } from 'lucide-react'
 import { useState } from 'react'
-import { useParams } from 'react-router'
+import { useLocation, useParams } from 'react-router'
 import { useTheme } from 'styled-components'
 import { erroPassageiro } from '../../shared/api/erros'
 import { quandoFoi } from '../../shared/formato/data'
 import { useNoComputador } from '../../shared/layout/useNoComputador'
 import { AvisoDeErro } from '../../shared/ui/AvisoDeErro'
 import { Botao, BotaoLink } from '../../shared/ui/Botao'
+import { Mensagem } from '../../shared/ui/Mensagem'
 import { SemPrevisao } from '../../shared/ui/SemPrevisao'
 import { Voltar } from '../../shared/ui/Voltar'
 import { useLavoura } from './api'
@@ -130,6 +131,10 @@ export function DetalheDaLavoura() {
   const { id = '' } = useParams()
   const noComputador = useNoComputador()
   const lavoura = useLavoura(id)
+  const { state } = useLocation()
+
+  // "Alterações salvas", depois de editar.
+  const mensagem = typeof state?.mensagem === 'string' ? state.mensagem : null
 
   let conteudo = <D.Vazio role="status">Carregando a lavoura…</D.Vazio>
   if (lavoura.data) {
@@ -161,6 +166,7 @@ export function DetalheDaLavoura() {
   if (noComputador) {
     return (
       <S.PaginaDoComputador>
+        {mensagem && <Mensagem texto={mensagem} />}
         <S.VoltarAoPainel to="/">
           <ChevronLeft size={tema.icone.botao} strokeWidth={tema.tracoDoIcone.forte} aria-hidden />
           Painel
@@ -172,6 +178,7 @@ export function DetalheDaLavoura() {
 
   return (
     <S.PaginaDoCelular>
+      {mensagem && <Mensagem texto={mensagem} />}
       <div>
         <Voltar para="/" rotulo="Voltar para o painel" />
       </div>
