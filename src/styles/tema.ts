@@ -6,6 +6,7 @@ import {
   fonte,
   icone,
   largura,
+  marcador,
   quebra,
   raio,
   sombra,
@@ -24,6 +25,7 @@ export const tema = {
   quebra,
   icone,
   tracoDoIcone,
+  marcador,
 }
 
 export type Tema = typeof tema

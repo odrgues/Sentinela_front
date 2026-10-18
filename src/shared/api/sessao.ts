@@ -25,3 +25,11 @@ export function apagarToken() {
     // armazenamento bloqueado: não tinha nada guardado
   }
 }
+
+// Avisa a casca que o token venceu, para ela levar a pessoa de volta ao login.
+export const SESSAO_VENCIDA = 'sentinela:sessao-vencida'
+
+export function encerrarSessaoVencida() {
+  apagarToken()
+  window.dispatchEvent(new Event(SESSAO_VENCIDA))
+}

@@ -99,4 +99,21 @@ Na API de mentira, entra a conta `joao@exemplo.com` com a senha `123456`. O cada
 e-mail dá "e-mail já cadastrado", e o link `/nova-senha?token=expirado` faz o papel do link
 vencido.
 
+**A casca e a Nova lavoura** (`src/shared/layout` e `src/features/lavoura`):
+
+- **A casca** das telas de quem entrou: no computador, a barra do topo com Painel, Nova lavoura
+  e Minha conta (com a inicial do nome). No celular, cada tela tem o próprio topo.
+- **Sessão vencida:** um 401 com token apaga o token e volta para o login com o aviso.
+- **Nova lavoura:** no celular em dois passos, "Onde fica sua lavoura?" (o mapa) e "O que você
+  plantou?" (o formulário); no computador, os dois lado a lado. O marcador fica parado no
+  meio e a pessoa arrasta o mapa; a busca usa o Places, o município e a UF vêm do Geocoder, e
+  "Usar minha localização" usa o GPS do navegador.
+- A lista de culturas com busca (sem ligar para acento), a pergunta do café ("Desde quando a
+  lavoura existe?") e o nome repetido (409) avisado embaixo do campo.
+
+**Sem a chave do Google** (`VITE_GOOGLE_MAPS_KEY`, ver `.env.example`), a tela mostra "Mapa
+desligado" e, em desenvolvimento e nos testes, marca a lavoura no ponto de exemplo, em Uberaba –
+MG. A parte do Google (mapa, busca e Geocoder) só roda com a chave, e ainda não foi testada com
+uma chave de verdade.
+
 As outras telas ainda estão com a página vazia.

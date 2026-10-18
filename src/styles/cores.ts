@@ -5,6 +5,8 @@ export const cores = {
     hover: '#1F4128',
     suave: '#E1EEDC',
     sobreSuave: '#24492D',
+    // A cultura escolhida na lista.
+    escolhido: '#EEF4EA',
   },
   fundo: {
     pagina: '#F5F3EC',
@@ -29,6 +31,8 @@ export const cores = {
   borda: {
     cartao: '#DAD8CC',
     campo: '#C3CBBE',
+    divisoria: '#E4E7DC',
+    opcao: '#A9B2A5',
   },
   // Cada nível de aviso tem a cor do marcador no mapa e o fundo e o texto do selo.
   nivel: {

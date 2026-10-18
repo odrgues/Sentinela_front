@@ -1,5 +1,5 @@
 import { ErroApi, MENSAGENS, erroDaResposta } from './erros'
-import { lerToken } from './sessao'
+import { encerrarSessaoVencida, lerToken } from './sessao'
 
 export type Parametros = Record<string, string | number | undefined>
 
@@ -40,6 +40,9 @@ export async function chamarApi<T>(caminho: string, opcoes: Opcoes = {}): Promis
   } catch {
     throw new ErroApi(MENSAGENS.semConexao, null)
   }
+
+  // Um 401 com token é sessão vencida. Sem token, é o login dizendo que a senha está errada.
+  if (resposta.status === 401 && token) encerrarSessaoVencida()
 
   // 204: deu certo e não tem corpo (excluir lavoura, excluir conta).
   if (resposta.status === 204) return undefined as T

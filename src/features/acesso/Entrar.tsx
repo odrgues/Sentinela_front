@@ -32,8 +32,10 @@ export function Entrar() {
   const [senha, setSenha] = useState('')
   const [erros, setErros] = useState<Erros>({})
 
-  // Quem acabou de trocar a senha chega aqui com a mensagem de sucesso.
+  // Quem acabou de trocar a senha chega aqui com a mensagem de sucesso; quem teve a sessão
+  // vencida, com o aviso.
   const mensagem = typeof state?.mensagem === 'string' ? state.mensagem : null
+  const aviso = typeof state?.aviso === 'string' ? state.aviso : null
   const erro = erroGeral(entrar.error)
 
   function enviar(evento: FormEvent) {
@@ -101,6 +103,7 @@ export function Entrar() {
         <S.LinkDaDireita>
           <Link to="/esqueci-senha">Esqueci minha senha</Link>
         </S.LinkDaDireita>
+        {aviso && !entrar.error && <AvisoDeErro titulo={aviso} />}
         {erro && (
           <AvisoDeErro
             titulo={erro.message}
