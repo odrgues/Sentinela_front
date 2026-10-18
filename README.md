@@ -80,5 +80,23 @@ Uma consulta vale por 5 minutos, não repete num 4xx e tenta mais duas vezes nos
 - O projeto com a mesma stack e as mesmas regras do Orizzonte front.
 - O tema claro, com as cores e as medidas do canvas, e a fonte Figtree.
 - A `chamarApi`, os erros e o token JWT guardado no navegador.
-- A API de mentira com MSW, que por enquanto responde só o `GET /api/culturas`.
-- As rotas das telas do canvas, cada uma ainda com a página vazia.
+- A API de mentira com MSW.
+- As rotas das telas do canvas.
+
+**O acesso** (`src/features/acesso`):
+
+- **Entrar**, **Criar conta**, **Esqueci minha senha** (com o "Confira seu e-mail") e **Criar
+  nova senha** (com o "Este link expirou"), no celular e no computador.
+- Login e cadastro guardam o token JWT. Do cadastro, a pessoa já vai marcar a primeira lavoura.
+- **Rotas protegidas:** sem token, as telas da lavoura e da conta mandam para o login. Com
+  token, o login, o cadastro e o esqueci a senha mandam para o painel. A nova senha abre dos
+  dois jeitos, porque o "Trocar minha senha" da conta usa o mesmo link.
+- Erro de campo embaixo do campo, e erro geral numa caixa em cima do botão.
+- As peças dos formulários em `src/shared/ui`: `Campo`, `Botao`, `AvisoDeErro`, `Mensagem`
+  (some sozinha em 4 segundos) e `Marca`.
+
+Na API de mentira, entra a conta `joao@exemplo.com` com a senha `123456`. O cadastro com esse
+e-mail dá "e-mail já cadastrado", e o link `/nova-senha?token=expirado` faz o papel do link
+vencido.
+
+As outras telas ainda estão com a página vazia.

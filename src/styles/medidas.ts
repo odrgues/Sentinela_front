@@ -12,6 +12,7 @@ export const espaco = {
   11: '24px',
   12: '28px',
   13: '32px',
+  14: '48px',
 }
 
 export const fonte = {
@@ -30,11 +31,15 @@ export const fonte = {
     corpo: '16px',
     destaque: '17px',
     secao: '18px',
+    campo: '17px',
+    botao: '18px',
     frase: '19px',
     marcaNoTopo: '21px',
     titulo: '26px',
     tituloComputador: '28px',
+    tituloDeAcesso: '32px',
     marca: '30px',
+    marcaComputador: '34px',
     temperatura: '30px',
     temperaturaComputador: '34px',
   },
@@ -43,6 +48,7 @@ export const fonte = {
     media: 1.4,
     solta: 1.5,
   },
+  espacamentoDaMarca: '-0.02em',
 }
 
 export const raio = {
@@ -53,6 +59,7 @@ export const raio = {
   botao: '14px',
   cartao: '16px',
   cartaoGrande: '18px',
+  quadro: '20px',
   folha: '24px',
   pilula: '999px',
   circulo: '50%',
@@ -71,6 +78,10 @@ export const altura = {
   botaoSecundario: '52px',
   campo: '54px',
   botao: '56px',
+  iconeEmDestaque: '64px',
+  numeroDoPasso: '28px',
+  faixaDoLogin: '290px',
+  faixaDoComputador: '320px',
 }
 
 // Até 1024px, as telas de celular. Acima disso, o menu no topo e o conteúdo em colunas.
@@ -81,11 +92,16 @@ export const quebra = {
 export const largura = {
   // As telas que não têm versão de computador ficam num cartão centralizado deste tamanho.
   cartaoCentral: '480px',
+  formulario: '420px',
+  textoDaFaixa: '460px',
+  colunaDoFormulario: '480px',
+  faixa: '520px',
 }
 
 export const espessura = {
   linha: '1px',
   borda: '1.5px',
+  bordaDeErro: '2px',
   foco: '3px',
 }
 
@@ -93,9 +109,14 @@ export const espessura = {
 export const icone = {
   selo: 16,
   botao: 18,
+  erroDoCampo: 18,
   seta: 22,
+  aviso: 22,
+  marcaNoTopo: 22,
   topo: 24,
+  destaque: 32,
   marca: 34,
+  marcaComputador: 40,
   clima: 40,
 }
 

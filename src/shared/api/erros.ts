@@ -60,3 +60,10 @@ export function erroPassageiro(erro: Error) {
   if (erro.status === null || erro.status < 400) return true
   return erro.status >= 500 || erro.status === 408 || erro.status === 429
 }
+
+// O erro que vai na caixa em cima do botão. Quando a API aponta os campos, cada erro aparece
+// embaixo do seu campo, e a caixa não aparece.
+export function erroGeral(erro: ErroApi | null): ErroApi | null {
+  if (!erro || Object.keys(erro.campos).length > 0) return null
+  return erro
+}
