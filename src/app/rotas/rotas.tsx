@@ -3,6 +3,8 @@ import { Cadastro } from '../../features/acesso/Cadastro'
 import { Entrar } from '../../features/acesso/Entrar'
 import { EsqueciSenha } from '../../features/acesso/EsqueciSenha'
 import { NovaSenha } from '../../features/acesso/NovaSenha'
+import { NovaLavoura } from '../../features/lavoura/NovaLavoura'
+import { Casca } from '../../shared/layout/Casca'
 import { SoQuemEntrou, SoQuemNaoEntrou } from './guardas'
 import { NaoEncontrada } from './NaoEncontrada'
 import { PaginaVazia } from './PaginaVazia'
@@ -22,11 +24,16 @@ export const rotas: RouteObject[] = [
   {
     element: <SoQuemEntrou />,
     children: [
-      { path: '/', element: <PaginaVazia titulo="Painel" /> },
-      { path: '/lavouras/nova', element: <PaginaVazia titulo="Nova lavoura" /> },
-      { path: '/lavouras/:id', element: <PaginaVazia titulo="Detalhe da lavoura" /> },
-      { path: '/lavouras/:id/editar', element: <PaginaVazia titulo="Editar lavoura" /> },
-      { path: '/conta', element: <PaginaVazia titulo="Minha conta" /> },
+      {
+        element: <Casca />,
+        children: [
+          { path: '/', element: <PaginaVazia titulo="Painel" /> },
+          { path: '/lavouras/nova', element: <NovaLavoura /> },
+          { path: '/lavouras/:id', element: <PaginaVazia titulo="Detalhe da lavoura" /> },
+          { path: '/lavouras/:id/editar', element: <PaginaVazia titulo="Editar lavoura" /> },
+          { path: '/conta', element: <PaginaVazia titulo="Minha conta" /> },
+        ],
+      },
     ],
   },
   { path: '*', element: <NaoEncontrada /> },

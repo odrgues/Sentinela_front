@@ -13,7 +13,7 @@ const TELAS_DE_ACESSO = [
 
 const TELAS_DE_QUEM_ENTROU = [
   ['/', 'Painel'],
-  ['/lavouras/nova', 'Nova lavoura'],
+  ['/lavouras/nova', 'Onde fica sua lavoura?'],
   ['/lavouras/7', 'Detalhe da lavoura'],
   ['/lavouras/7/editar', 'Editar lavoura'],
   ['/conta', 'Minha conta'],

@@ -38,6 +38,8 @@ export const fonte = {
     titulo: '26px',
     tituloComputador: '28px',
     tituloDeAcesso: '32px',
+    tituloNoMapa: '24px',
+    tituloDaTela: '30px',
     marca: '30px',
     marcaComputador: '34px',
     temperatura: '30px',
@@ -70,6 +72,7 @@ export const sombra = {
   flutuante: '0 4px 16px rgba(28, 42, 31, 0.14)',
   mensagem: '0 6px 20px rgba(28, 42, 31, 0.25)',
   folha: '0 -6px 24px rgba(28, 42, 31, 0.14)',
+  cartaoNoMapa: '0 6px 24px rgba(28, 42, 31, 0.16)',
 }
 
 export const altura = {
@@ -80,6 +83,11 @@ export const altura = {
   botao: '56px',
   iconeEmDestaque: '64px',
   numeroDoPasso: '28px',
+  avatar: '36px',
+  opcao: '60px',
+  bolinhaDaOpcao: '22px',
+  listaDeCulturas: '232px',
+  mapaNoComputador: '520px',
   faixaDoLogin: '290px',
   faixaDoComputador: '320px',
 }
@@ -96,12 +104,17 @@ export const largura = {
   textoDaFaixa: '460px',
   colunaDoFormulario: '480px',
   faixa: '520px',
+  formularioDaLavoura: '520px',
+  colunaDaLavoura: '400px',
+  mapa: '560px',
 }
 
 export const espessura = {
   linha: '1px',
   borda: '1.5px',
   bordaDeErro: '2px',
+  opcao: '2px',
+  opcaoEscolhida: '7px',
   foco: '3px',
 }
 
@@ -118,6 +131,13 @@ export const icone = {
   marca: 34,
   marcaComputador: 40,
   clima: 40,
+  busca: 20,
+}
+
+// O marcador parado no meio do mapa, com a ponta no ponto marcado.
+export const marcador = {
+  largura: 56,
+  altura: 72,
 }
 
 export const tracoDoIcone = {
