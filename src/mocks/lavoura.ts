@@ -57,7 +57,26 @@ export const handlersDaLavoura = [
       )
     }
     const mudancas = (await request.json()) as Record<string, unknown>
+    const outra = painel().cultivos.find(
+      ({ id, apelido }) => id !== lavoura.id && apelido === mudancas.apelido,
+    )
+    if (outra) {
+      return HttpResponse.json(
+        { status: 409, mensagem: 'Você já tem uma lavoura com esse nome.' },
+        { status: 409 },
+      )
+    }
     return HttpResponse.json({ ...lavoura, ...mudancas })
+  }),
+
+  http.delete('/api/cultivos/:id', ({ params }) => {
+    if (!detalhe(Number(params.id))) {
+      return HttpResponse.json(
+        { status: 404, mensagem: 'Lavoura não encontrada.' },
+        { status: 404 },
+      )
+    }
+    return new HttpResponse(null, { status: 204 })
   }),
 
   http.post('/api/cultivos', async ({ request }) => {

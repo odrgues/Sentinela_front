@@ -1,5 +1,5 @@
 import { CircleAlert, Search } from 'lucide-react'
-import { useId, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import { useTheme } from 'styled-components'
 import { useCulturas } from '../../../shared/api/useCulturas'
 import { Botao } from '../../../shared/ui/Botao'
@@ -23,6 +23,16 @@ export function EscolherCultura({ escolhida, aoEscolher, erro }: Props) {
   const culturas = useCulturas()
   const [busca, setBusca] = useState('')
 
+  const lista = useRef<HTMLDivElement>(null)
+  const carregou = culturas.isSuccess
+
+  // Na edição, a cultura marcada pode estar no fim da lista: rola até ela ao abrir.
+  useEffect(() => {
+    const caixa = lista.current
+    const marcada = caixa?.querySelector<HTMLElement>('label:has(input:checked)')
+    if (caixa && marcada) caixa.scrollTop = marcada.offsetTop - caixa.offsetTop
+  }, [carregou])
+
   const todas = culturas.data ?? []
   const comBusca = todas.length > CULTURAS_SEM_BUSCA
   const visiveis = todas.filter((cultura) => paraBusca(cultura.nome).includes(paraBusca(busca)))
@@ -45,7 +55,7 @@ export function EscolherCultura({ escolhida, aoEscolher, erro }: Props) {
           />
         </S.Busca>
       )}
-      <S.Lista $comErro={Boolean(erro)}>
+      <S.Lista ref={lista} $comErro={Boolean(erro)}>
         {culturas.isPending && <S.Aviso>Carregando as culturas…</S.Aviso>}
         {culturas.isError && (
           <S.Aviso role="alert">

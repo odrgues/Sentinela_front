@@ -4,6 +4,7 @@ import type {
   DiaDePrevisao,
 } from '../../features/lavoura/tipos'
 import { hoje } from '../../shared/formato/data'
+import { culturas } from './culturas'
 import { painel } from './painel'
 
 // Os dias de hoje em diante, no formato da API.
@@ -90,6 +91,7 @@ export function detalhe(id: number): DetalheDaLavoura | null {
     id,
     apelido: doPainel.apelido,
     cultura: doPainel.cultura,
+    culturaId: culturas.find(({ nome }) => nome === doPainel.cultura)?.id,
     areaHa: 12,
     municipio: 'Uberaba – MG',
     latitude: doPainel.latitude,

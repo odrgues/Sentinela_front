@@ -1,7 +1,7 @@
 import { Link } from 'react-router'
 import styled, { css } from 'styled-components'
 
-export type Variante = 'principal' | 'contorno' | 'neutro'
+export type Variante = 'principal' | 'contorno' | 'neutro' | 'perigo'
 
 const estilo = css<{ $variante: Variante }>`
   min-height: ${({ theme }) => theme.altura.botaoSecundario};
@@ -46,6 +46,20 @@ const estilo = css<{ $variante: Variante }>`
       background: ${theme.cores.fundo.cartao};
       color: ${theme.cores.texto.principal};
       border: ${theme.espessura.borda} solid ${theme.cores.borda.campo};
+    `}
+
+  ${({ theme, $variante }) =>
+    $variante === 'perigo' &&
+    css`
+      min-height: ${theme.altura.botao};
+      font-size: ${theme.fonte.tamanho.botao};
+      background: ${theme.cores.erro};
+      color: ${theme.cores.texto.sobreDestaque};
+      border: none;
+
+      &:hover {
+        color: ${theme.cores.texto.sobreDestaque};
+      }
     `}
 
   &:disabled {

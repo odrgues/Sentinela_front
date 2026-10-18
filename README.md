@@ -148,4 +148,15 @@ o `DEMO_MAP_ID`, que serve para desenvolvimento.
 - Lavoura que não existe (ou de outra pessoa, que a API devolve como 404): "Lavoura não
   encontrada".
 
-Ainda com a página vazia: Editar lavoura e Minha conta.
+**Editar lavoura** (`/lavouras/:id/editar`, em `src/features/lavoura`):
+
+- Os mesmos campos da Nova lavoura, já preenchidos. "Trocar" abre o mapa no ponto salvo, e o
+  ponto novo só vale depois de "Confirmar local".
+- O `PATCH` leva só o que mudou; sem mudança, volta para a lavoura sem chamar a API. Depois de
+  salvar, a lavoura mostra "Alterações salvas".
+- "Excluir esta lavoura" pede confirmação (`DELETE`) e volta para o painel com "Lavoura
+  excluída".
+- No computador, o formulário fica num cartão no meio da tela, como as telas que só têm versão
+  de celular no canvas.
+
+Ainda com a página vazia: Minha conta.

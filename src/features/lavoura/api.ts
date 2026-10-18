@@ -67,3 +67,37 @@ export function useEncerrarLavoura(id: string) {
     },
   })
 }
+
+// Só os campos que mudaram. Mudar a cultura ou a data faz o backend refazer a colheita
+// prevista e os avisos.
+export type MudancasNaLavoura = Partial<Omit<NovoCultivo, 'areaHa'>> & { areaHa?: number | null }
+
+export function useEditarLavoura(id: string) {
+  const navegar = useNavigate()
+  const clienteDeConsultas = useQueryClient()
+
+  return useMutation<Cultivo, ErroApi, MudancasNaLavoura>({
+    mutationFn: (mudancas) =>
+      chamarApi<Cultivo>(`cultivos/${id}`, { metodo: 'PATCH', corpo: mudancas }),
+    onSuccess: () => {
+      clienteDeConsultas.invalidateQueries({ queryKey: ['painel'] })
+      clienteDeConsultas.invalidateQueries({ queryKey: ['lavoura', id] })
+      clienteDeConsultas.invalidateQueries({ queryKey: ['historico', id] })
+      navegar(`/lavouras/${id}`, { state: { mensagem: 'Alterações salvas' } })
+    },
+  })
+}
+
+export function useExcluirLavoura(id: string) {
+  const navegar = useNavigate()
+  const clienteDeConsultas = useQueryClient()
+
+  return useMutation<void, ErroApi, void>({
+    mutationFn: () => chamarApi<void>(`cultivos/${id}`, { metodo: 'DELETE' }),
+    onSuccess: () => {
+      clienteDeConsultas.removeQueries({ queryKey: ['lavoura', id] })
+      clienteDeConsultas.invalidateQueries({ queryKey: ['painel'] })
+      navegar('/', { state: { mensagem: 'Lavoura excluída' } })
+    },
+  })
+}
